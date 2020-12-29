@@ -2,6 +2,9 @@
   "name": "problem-solving-by-js",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.12.10",

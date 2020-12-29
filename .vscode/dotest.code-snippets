@@ -1,0 +1,19 @@
+{
+	"Let's do test": {
+		"scope": "javascript,typescript",
+		"prefix": "dotest",
+		"body": [
+			"import doTests from '../../do.test';",
+			"",
+			"const inputs = [];",
+			"const results = [];",
+			"",
+			"const solution = (values) => {",
+			"  return;",
+			"};",
+			"",
+			"doTests(inputs, results, solution);"
+		],
+		"description": "Do test with maked solution"
+	}
+}

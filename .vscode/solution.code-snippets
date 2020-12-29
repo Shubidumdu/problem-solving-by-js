@@ -1,0 +1,14 @@
+{
+	"Make solution function": {
+		"scope": "javascript,typescript",
+		"prefix": "solution",
+		"body": [
+			"const solution = (values) => {",
+			"",
+			"}",
+			"",
+			"export default solution;"
+		],
+		"description": "Make solution function"
+	}
+}
