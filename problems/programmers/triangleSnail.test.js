@@ -1,6 +1,6 @@
 import doTests from '../../do.test';
 
-// 이거 자꾸 어느 순간 arrays가 []이 되고, `circle`이 1이 되어버리는데 왜 그러는지 모르겠음;;;;
+// 이거 input이 100인 경우에 적용하면 자꾸 어느 순간 arrays가 []이 되고, `circle`이 1이 되어버리는데 왜 그러는지 모르겠음;;;;
 
 let start;
 let end;
@@ -75,7 +75,7 @@ const solution = (n) => {
     circle += 1;
   }
 
-  const answer = [].concat(...arrays);
+  const answer = arrays.flat();
   return answer;
 };
 
