@@ -4,11 +4,10 @@ const doTests = (inputs, results, solution) => {
     const stringInput = JSON.stringify(input);
     const stringResult = JSON.stringify(result);
     return test(`${index}) ${stringInput} should be ${stringResult}`, () => {
-      const answer =
-        typeof input === 'object' ? solution(...input) : solution(input);
+      const answer = solution(...input);
       if (typeof result === 'object') expect(answer).toEqual(result);
       else expect(solution(input)).toBe(result);
-    });
+    }, 10000);
   });
 };
 

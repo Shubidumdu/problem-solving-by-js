@@ -3,7 +3,7 @@
     "sourceType": "module"
   },
   "plugins": ["jest"],
-  "extends": ["plugin:jest/recommended"],
+  "extends": ["eslint:recommended", "plugin:jest/recommended"],
   "env": {
     "jest/globals": true,
     "node": true,
