@@ -6,7 +6,7 @@ const doTests = (inputs, results, solution) => {
     return test(`${index}) ${stringInput} should be ${stringResult}`, () => {
       const answer = solution(...input);
       if (typeof result === 'object') expect(answer).toEqual(result);
-      else expect(solution(input)).toBe(result);
+      else expect(answer).toBe(result);
     }, 10000);
   });
 };
