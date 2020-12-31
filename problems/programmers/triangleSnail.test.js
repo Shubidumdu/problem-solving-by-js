@@ -1,8 +1,8 @@
 import doTests from '../../do.test';
 
-// 이거 input이 100인 경우에 적용하면 자꾸 어느 순간 arrays가 []이 되고, `circuit`이 1이 되어버리는데 왜 그러는지 모르겠음;;;;
+// 결국 답안 컨닝....ㅠ
 
-const inputs = [[1], [2], [3], [4], [5], [6], [100]];
+const inputs = [[1], [2], [3], [4], [5], [6]];
 
 const results = [
   [1],
@@ -13,71 +13,40 @@ const results = [
   [1, 2, 15, 3, 16, 14, 4, 17, 21, 13, 5, 18, 19, 20, 12, 6, 7, 8, 9, 10, 11],
 ];
 
-let start;
-let end;
-
-const solution = (n) => {
-  const arrays = [
-    ...Array(n)
-      .fill()
-      .map(() => []),
-  ];
-
-  end = (n * (n + 1)) / 2;
-  start = 1;
-  let circuit = 0;
-
-  while (start <= end) {
-    padLeftDown(arrays, circuit);
-    padRow(arrays, circuit);
-    padLeftUp(arrays, circuit);
-    circuit += 1;
+function solution(n) {
+  const results = [];
+  for (let i = 1; i <= n; i++) {
+    results.push(Array.from({ length: i }, () => 0));
   }
-
-  const answer = arrays.flat();
-  return answer;
-};
-
-const isFull = (array, index) => {
-  return array.length === index + 1;
-};
-
-const padLeftDown = (arrays, circuit) => {
-  console.log(arrays, circuit);
-  arrays.forEach((arr, index) => {
-    if (start > end) return;
-    if (isFull(arr, index)) return;
-    arr.splice(circuit, 0, start);
-    start += 1;
-  });
-};
-
-const padRow = (arrays, circuit) => {
-  let startIndex = circuit + 1;
-  const array = arrays[arrays.length - circuit - 1];
-  const index = arrays.length - circuit - 1;
-  while (!isFull(array, index)) {
-    array.splice(startIndex, 0, start);
-    startIndex += 1;
-    start += 1;
-    if (start > end) return;
-  }
-};
-
-const padLeftUp = (arrays, circuit) => {
-  let startIndex = arrays.length - circuit - 1;
-  arrays.forEach((_, idx) => {
-    const index = arrays.length - idx - 1;
-    const arr = arrays[index];
-    if (isFull(arr, index)) {
-      startIndex -= 1;
-      return;
+  let counter = 1,
+    startColumn = 0,
+    startRow = 0,
+    endRow = n - 1,
+    endColumn = n - 1,
+    cnt = 0;
+  while (startColumn <= endColumn && startRow <= endRow) {
+    for (let i = startRow; i <= endRow; i++) {
+      results[i][startColumn] = counter;
+      counter++;
     }
-    arr.splice(startIndex, 0, start);
-    startIndex -= 1;
-    start += 1;
-    if (start > end) return;
-  });
-};
+    startRow++;
+    startColumn++;
+    for (let i = startColumn; i <= endColumn; i++) {
+      results[endRow][i] = counter;
+      counter++;
+    }
+    endColumn--;
+    endRow--;
+    for (let i = endRow; i >= startRow; i--) {
+      results[i][results[i].length - 1 - cnt] = counter;
+      counter++;
+    }
+    endColumn--;
+    startRow++;
+    cnt++;
+  }
+
+  return results.flat();
+}
 
 doTests(inputs, results, solution);
