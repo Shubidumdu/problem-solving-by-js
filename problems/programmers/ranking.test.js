@@ -1,5 +1,6 @@
 import doTests from '../../do.test';
 
+// 프로그래머스 - 순위 lv3
 const inputs = [
   [
     5,
