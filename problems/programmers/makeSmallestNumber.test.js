@@ -19,9 +19,7 @@ const solution = (A, B) => {
   A.sort();
   B.sort((a, b) => b - a);
 
-  const answer = A.reduce((prev, val, idx) => {
-    return prev + val * B[idx];
-  }, 0);
+  const answer = A.reduce((prev, val, idx) => prev + val * B[idx], 0);
 
   return answer;
 };
