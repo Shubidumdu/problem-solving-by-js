@@ -1,5 +1,7 @@
 import doTests from '../../do.test';
 
+// 하노이의 탑 - 프로그래머스 lv.3
+
 const inputs = [[2], [3]];
 const results = [
   [
