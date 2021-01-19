@@ -21,16 +21,15 @@ const results = [
   [4, 7],
 ];
 
-
 // 투포인터 알고리즘 쓰기
 const solution = (gems) => {
-  let start = 0, end = 0;
+  let start = 0,
+    end = 0;
   let allGemsCount = new Set(gems).size;
   let answer = [0, 0];
-  while(true) {
+  while (true) {
     if (start === gems.length - 1 && end === gems.length - 1) break;
     const sliced = gems.slice(start, end);
-    if()
   }
 };
 
