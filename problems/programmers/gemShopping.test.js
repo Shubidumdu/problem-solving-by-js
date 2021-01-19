@@ -18,36 +18,20 @@ const results = [
   [5, 7],
   [8, 11],
   [3, 5],
-  [3, 6],
+  [4, 7],
 ];
 
+
+// 투포인터 알고리즘 쓰기
 const solution = (gems) => {
-  const allGemsCount = new Set(gems).size;
-  // const gemMaps = [];
-  // let startGem = '';
-  // const gemMap = new Map();
-  // gems.forEach((gem, idx) => {
-  //   if (!idx) {
-  //     startGem = gem;
-  //   }
-  //   if (gemMap.size === allGemsCount) {
-  //     if(startGem === gem) {
-  //       const temp = new Map(gemMap);
-  //       temp.set(gem, idx + 1);
-  //       gemMaps.push(temp);
-  //     }
-  //   }
-  // });
-  const gemMap = gems.reduce((prev, gem, idx) => {
-    if (prev.size === allGemsCount) return prev;
-    prev.set(gem, idx + 1);
-    return prev;
-  }, new Map());
-
-  const positions = [...gemMap.values()].sort((a, b) => a - b);
-  const answer = [positions[0], positions[positions.length - 1]];
-
-  return answer;
+  let start = 0, end = 0;
+  let allGemsCount = new Set(gems).size;
+  let answer = [0, 0];
+  while(true) {
+    if (start === gems.length - 1 && end === gems.length - 1) break;
+    const sliced = gems.slice(start, end);
+    if()
+  }
 };
 
 doTests(inputs, results, solution);
