@@ -1,5 +1,8 @@
 import doTests from '../../do.test';
 
+// 프로그래머스 LV.2 - 게임 맵 최단거리
+// 효율성 테스트를 통과 못한다..
+
 const inputs = [
   [
     [
