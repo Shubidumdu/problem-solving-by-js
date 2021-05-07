@@ -34,7 +34,7 @@ const solution = (n) => {
     }
   }
 
-  return arrays.join('');
+  return parseInt(arrays.join(''));
 };
 
 doTests(inputs, results, solution);
