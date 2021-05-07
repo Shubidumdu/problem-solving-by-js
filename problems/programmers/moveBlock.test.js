@@ -1,4 +1,5 @@
 import doTests from '../../do.test';
+import Deque from '../../deque';
 
 const inputs = [
   [
@@ -131,7 +132,7 @@ const solution = (board) => {
     [...Array(board.length)].map(() => false),
   );
 
-  const moves = [[visited, 0, robot]];
+  const moves = new Deque([[visited, 0, robot]]);
 
   while (true) {
     const [visited, counts, robot] = moves.shift();
@@ -142,17 +143,11 @@ const solution = (board) => {
       continue;
     tempVisited[part1_row][part1_col] = true;
     tempVisited[part2_row][part2_col] = true;
-    moves.push(
-      ...moveRobot(robot, board).map((robot) => [
-        tempVisited,
-        counts + 1,
-        robot,
-      ]),
-      ...rotateRobot(robot, board).map((robot) => [
-        tempVisited,
-        counts + 1,
-        robot,
-      ]),
+    moveRobot(robot, board).forEach((robot) =>
+      moves.push([tempVisited, counts + 1, robot]),
+    );
+    rotateRobot(robot, board).map((robot) =>
+      moves.push([tempVisited, counts + 1, robot]),
     );
   }
 };

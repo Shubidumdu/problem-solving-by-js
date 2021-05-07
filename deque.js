@@ -12,6 +12,10 @@ class Deque {
       });
   }
 
+  get length() {
+    return this._map.size;
+  }
+
   push(val) {
     this._last++;
     this._map.set(this._last, val);
@@ -33,3 +37,5 @@ class Deque {
     return firstValue;
   }
 }
+
+export default Deque;
